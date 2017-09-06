@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:9.6.5
+    volumes:
+      - db:/var/lib/postgresql/data
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  db:
